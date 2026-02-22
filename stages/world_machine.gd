@@ -115,11 +115,10 @@ func _on_transition_to(_handover: Variant) -> void:
 func _on_transition_from() -> void:
 	pass
 
-func dummy():
-	pass
-func _ready() -> void:
-	super()
-	call_deferred("dummy")
+func boot_from_editor():
 	if get_child_count() < 1:
 		var level = level_scene.instantiate()
 		load_level(level)
+func _ready() -> void:
+	super()
+	call_deferred("boot_from_editor")
